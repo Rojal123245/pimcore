@@ -104,4 +104,7 @@ supervisord.pid
 /.DS_Store
 assets/.DS_Store
 assets/images/.DS_Store
+.env
+.htaccess
+
 

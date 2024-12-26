@@ -1,0 +1,158 @@
+pimcore:
+    workflows:
+        Product_Publication_Workflow:
+            enabled: true
+            priority: 1
+            label: 'Product Publication Workflow'
+            initial_place: product_open
+            type: workflow
+            supports:
+                - \Pimcore\Model\DataObject\Product
+            places:
+                product_open:
+                    label: 'Product Open'
+                    color: '#d3d3d3'
+                    visibleInHeader: true
+                    permissions:
+                        -
+                            condition: 'has_role("ROLE_VENDOR") or has_role("ROLE_ADMIN")'
+                            save: true
+                            publish: false
+                            delete: false
+                            unpublish: false
+                            rename: false
+
+                vendor_create:
+                    label: 'Vendor Create a New Product'
+                    color: '#e8a000'
+                    visibleInHeader: true
+                    permissions:
+                        -
+                            condition: 'has_role("ROLE_VENDOR")'
+                            save: true
+                            publish: false
+                            delete: false
+                            unpublish: false
+                            rename: false
+
+                pending:
+                    label: 'Pending'
+                    color: '#ffcc00'
+                    visibleInHeader: true
+                    permissions:
+                        -
+                            condition: 'has_role("ROLE_VENDOR") or has_role("ROLE_ADMIN")'
+                            save: false
+                            publish: false
+                            delete: false
+                            unpublish: false
+                            rename: false
+
+                review_rejected:
+                    label: 'Review Rejected'
+                    color: '#ff0000'
+                    visibleInHeader: true
+                    permissions:
+                        -
+                            condition: 'has_role("ROLE_ADMIN")'
+                            save: false
+                            publish: false
+                            delete: false
+                            unpublish: false
+                            rename: false
+
+                published:
+                    label: 'Published'
+                    color: '#1dcd23'
+                    visibleInHeader: true
+                    permissions:
+                        -
+                            condition: 'has_role("ROLE_ADMIN")'
+                            save: false
+                            publish: true
+                            delete: false
+                            unpublish: false
+                            rename: false
+
+            transitions:
+
+                create_product:
+                    guard: 'is_fully_authenticated() and has_role("ROLE_VENDOR")'
+                    from:
+                        - product_open
+                    to:
+                        - vendor_create
+                    options:
+                        label: 'Create Product'
+                        notes:
+                            commentEnabled: false
+                    name: create_product
+
+                submit_for_review:
+                    guard: 'is_fully_authenticated() and has_role("ROLE_VENDOR")'
+                    from:
+                        - vendor_create
+                    to:
+                        - pending
+                    options:
+                        label: 'Submit for Review'
+                        notificationSettings:
+                            -
+                                notifyRoles: ['ROLE_ADMIN']
+                                channelType:
+                                    - pimcore_notification
+                    name: submit_for_review
+
+                review_product:
+                    guard: 'is_fully_authenticated() and has_role("ROLE_ADMIN")'
+                    from:
+                        - pending
+                    to:
+                        - published
+                    options:
+                        label: 'Approve and Publish'
+                        notes:
+                            commentEnabled: false
+                    name: review_product
+
+                reject_review:
+                    guard: 'is_fully_authenticated() and has_role("ROLE_ADMIN")'
+                    from:
+                        - pending
+                    to:
+                        - review_rejected
+                    options:
+                        label: 'Reject Review'
+                        notificationSettings:
+                            -
+                                notifyRoles: ['ROLE_VENDOR']
+                                channelType:
+                                    - pimcore_notification
+                    name: reject_review
+
+                notify_vendor:
+                    guard: 'is_fully_authenticated() and has_role("ROLE_ADMIN")'
+                    from:
+                        - review_rejected
+                    to:
+                        - pending
+                    options:
+                        label: 'Request Additional Information'
+                        notificationSettings:
+                            -
+                                notifyRoles: ['ROLE_VENDOR']
+                                channelType:
+                                    - pimcore_notification
+                    name: notify_vendor
+
+                republish:
+                    guard: 'is_fully_authenticated() and has_role("ROLE_ADMIN")'
+                    from:
+                        - review_rejected
+                    to:
+                        - pending
+                    options:
+                        label: 'Republish'
+                        notes:
+                            commentEnabled: false
+                    name: republish

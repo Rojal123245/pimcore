@@ -1,0 +1,33 @@
+pimcore:
+    custom_views:
+        definitions:
+            e053d052-cda0-6a00-d0ad-efca60e98877:
+                name: vendor
+                treetype: object
+                position: left
+                rootfolder: /
+                showroot: false
+                sort: 0
+                treeContextMenu:
+                    object:
+                        items:
+                            add: true
+                            addFolder: true
+                            importCsv: true
+                            cut: true
+                            copy: true
+                            paste: true
+                            delete: true
+                            rename: true
+                            reload: true
+                            publish: true
+                            unpublish: true
+                            searchAndMove: true
+                            lock: true
+                            unlock: true
+                            lockAndPropagate: true
+                            unlockAndPropagate: true
+                            changeChildrenSortBy: true
+                classes: 'product,vendor'
+                joins: {  }
+                id: e053d052-cda0-6a00-d0ad-efca60e98877

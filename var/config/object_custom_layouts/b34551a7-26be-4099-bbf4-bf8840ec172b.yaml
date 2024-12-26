@@ -1,0 +1,182 @@
+pimcore:
+    objects:
+        custom_layouts:
+            definitions:
+                b34551a7-26be-4099-bbf4-bf8840ec172b:
+                    id: b34551a7-26be-4099-bbf4-bf8840ec172b
+                    name: createProduct
+                    description: ''
+                    creationDate: 1730128717
+                    modificationDate: 1731176874
+                    userOwner: 2
+                    classId: product
+                    layoutDefinitions:
+                        name: pimcore_root
+                        type: null
+                        region: null
+                        title: null
+                        width: 0
+                        height: 0
+                        collapsible: false
+                        collapsed: false
+                        bodyStyle: null
+                        datatype: layout
+                        children:
+                            -
+                                name: Layout
+                                type: null
+                                region: null
+                                title: ''
+                                width: ''
+                                height: ''
+                                collapsible: false
+                                collapsed: false
+                                bodyStyle: ''
+                                datatype: layout
+                                children:
+                                    -
+                                        name: General
+                                        type: null
+                                        region: null
+                                        title: General
+                                        width: ''
+                                        height: ''
+                                        collapsible: true
+                                        collapsed: true
+                                        bodyStyle: ''
+                                        datatype: layout
+                                        children:
+                                            -
+                                                name: name
+                                                title: Name
+                                                tooltip: ''
+                                                mandatory: true
+                                                noteditable: false
+                                                index: true
+                                                locked: false
+                                                style: ''
+                                                permissions: null
+                                                fieldtype: input
+                                                relationType: false
+                                                invisible: false
+                                                visibleGridView: true
+                                                visibleSearch: true
+                                                defaultValue: null
+                                                columnLength: 190
+                                                regex: ''
+                                                regexFlags: {  }
+                                                unique: false
+                                                showCharCount: false
+                                                width: ''
+                                                defaultValueGenerator: ''
+                                                datatype: data
+                                            -
+                                                name: sku
+                                                title: Sku
+                                                tooltip: ''
+                                                mandatory: false
+                                                noteditable: true
+                                                index: true
+                                                locked: false
+                                                style: ''
+                                                permissions: null
+                                                fieldtype: input
+                                                relationType: false
+                                                invisible: true
+                                                visibleGridView: true
+                                                visibleSearch: true
+                                                defaultValue: null
+                                                columnLength: 190
+                                                regex: ''
+                                                regexFlags: {  }
+                                                unique: false
+                                                showCharCount: false
+                                                width: ''
+                                                defaultValueGenerator: ''
+                                                datatype: data
+                                            -
+                                                name: short_description
+                                                title: 'Short  Description'
+                                                tooltip: ''
+                                                mandatory: false
+                                                noteditable: false
+                                                index: false
+                                                locked: false
+                                                style: ''
+                                                permissions: null
+                                                fieldtype: textarea
+                                                relationType: false
+                                                invisible: false
+                                                visibleGridView: true
+                                                visibleSearch: true
+                                                maxLength: 255
+                                                showCharCount: true
+                                                excludeFromSearchIndex: false
+                                                height: ''
+                                                width: ''
+                                                datatype: data
+                                            -
+                                                name: description
+                                                title: Description
+                                                tooltip: ''
+                                                mandatory: false
+                                                noteditable: false
+                                                index: false
+                                                locked: false
+                                                style: ''
+                                                permissions: null
+                                                fieldtype: wysiwyg
+                                                relationType: false
+                                                invisible: false
+                                                visibleGridView: true
+                                                visibleSearch: true
+                                                toolbarConfig: ''
+                                                excludeFromSearchIndex: false
+                                                maxCharacters: ''
+                                                height: ''
+                                                width: ''
+                                                datatype: data
+                                            -
+                                                name: product_category
+                                                title: 'Product category'
+                                                tooltip: ''
+                                                mandatory: false
+                                                noteditable: false
+                                                index: false
+                                                locked: false
+                                                style: ''
+                                                permissions: null
+                                                fieldtype: select
+                                                relationType: false
+                                                invisible: false
+                                                visibleGridView: true
+                                                visibleSearch: true
+                                                options: {  }
+                                                defaultValue: ''
+                                                columnLength: 190
+                                                dynamicOptions: false
+                                                defaultValueGenerator: ''
+                                                width: ''
+                                                optionsProviderType: configure
+                                                optionsProviderClass: ''
+                                                optionsProviderData: ''
+                                                datatype: data
+                                        locked: false
+                                        fieldtype: fieldset
+                                        labelWidth: 100
+                                        labelAlign: left
+                                locked: false
+                                fieldtype: panel
+                                layout: null
+                                border: false
+                                icon: ''
+                                labelWidth: 100
+                                labelAlign: left
+                        locked: false
+                        fieldtype: panel
+                        layout: null
+                        border: false
+                        icon: null
+                        labelWidth: 100
+                        labelAlign: left
+                    default: 0

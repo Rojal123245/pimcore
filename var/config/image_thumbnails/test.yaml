@@ -1,0 +1,26 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    test:
+                        items:
+                            -
+                                method: resize
+                                arguments:
+                                    width: 100
+                                    height: 100
+                        medias: {  }
+                        name: test
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1727888500
+                        creationDate: 1727888454
+                        preserveAnimation: false

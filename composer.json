@@ -13,7 +13,7 @@
   "prefer-stable": true,
   "require": {
     "ext-dom": "*",
-    "pimcore/admin-ui-classic-bundle": "^1.6",
+    "pimcore/admin-ui-classic-bundle": "*",
     "pimcore/bundle-generator": "^2.0",
     "pimcore/data-hub": "^1.8",
     "pimcore/data-importer": "^1.9",

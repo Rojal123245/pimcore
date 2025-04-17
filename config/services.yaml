@@ -37,3 +37,8 @@ services:
   App\Service\PaymentService:
     arguments:
       $stripeSecretKey: "%env(STRIPE_SECRET_KEY)%"
+
+  # Event subscriber to handle admin controller issues
+  App\EventSubscriber\AdminControllerSubscriber:
+    tags:
+      - { name: kernel.event_subscriber }

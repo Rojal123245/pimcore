@@ -16,7 +16,6 @@ return [
     Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle::class => ['all' => true],
     Pimcore\Bundle\GlossaryBundle\PimcoreGlossaryBundle::class => ['all' => true],
     Pimcore\Bundle\AdminBundle\PimcoreAdminBundle::class => ['all' => true, 'priority' => 100],
-    Pimcore\Bundle\AdminUiClassicBundle\PimcoreAdminUiClassicBundle::class => ['all' => true, 'priority' => 90],
     Pimcore\Bundle\PerspectiveEditorBundle\PimcorePerspectiveEditorBundle::class => ['all' => true],
     Pimcore\Bundle\DataImporterBundle\PimcoreDataImporterBundle::class => ['all' => true],
     Pimcore\Bundle\DataHubBundle\PimcoreDataHubBundle::class => ['all' => true, 'priority' => 100],

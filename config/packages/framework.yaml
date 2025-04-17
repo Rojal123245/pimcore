@@ -8,3 +8,6 @@ framework:
 
   csrf_protection:
     enabled: true
+
+  annotations:
+    enabled: true

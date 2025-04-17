@@ -8,3 +8,11 @@ app:
 homepage:
   path: /
   controller: App\Controller\DefaultController::indexAction
+
+pimcore_admin_index:
+  path: /admin
+  controller: Pimcore\Bundle\AdminBundle\Controller\Admin\IndexController::indexAction
+
+pimcore_admin_login:
+  path: /admin/login
+  controller: Pimcore\Bundle\AdminBundle\Controller\Admin\LoginController::loginAction

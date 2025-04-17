@@ -27,7 +27,7 @@ services:
     nginx:
         image: nginx:stable-alpine
         ports:
-            - "8080:80"
+            - "80:80"  # Changed from "8080:80"
         volumes:
             - .:/var/www/html:ro
             - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
@@ -35,18 +35,21 @@ services:
             - php
 
     php:
-        #user: '1000:1000' # set to your uid:gid
-        image: pimcore/pimcore:php8.2-debug-latest
+        build:
+            context: .
+            dockerfile: .docker/php/Dockerfile
         environment:
             COMPOSER_HOME: /var/www/html
             PHP_IDE_CONFIG: serverName=localhost
-            # Feed installer configuration via ENV variables.
-            # See: https://pimcore.com/docs/pimcore/current/Development_Documentation/Getting_Started/Advanced_Installation_Topics.html#page_Advanced-Installation-Topics
             PIMCORE_INSTALL_MYSQL_USERNAME: pimcore
             PIMCORE_INSTALL_MYSQL_PASSWORD: pimcore
             PIMCORE_INSTALL_MYSQL_PORT: 3306
             PIMCORE_INSTALL_MYSQL_HOST_SOCKET: db
             PIMCORE_INSTALL_MYSQL_DATABASE: pimcore
+            PIMCORE_ENVIRONMENT: dev
+            SYMFONY_ENV: dev
+            PHP_SESSION_SAVE_HANDLER: files
+            PHP_SESSION_SAVE_PATH: '/var/www/html/var/sessions'
         depends_on:
             db:
                 condition: service_healthy

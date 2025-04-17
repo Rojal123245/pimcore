@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Product Images -->
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow">
+                <img src="{{ product.images[0] }}" alt="{{ product.name }}" 
+                     class="w-full h-96 object-cover rounded-lg">
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+                {% for image in product.images|slice(1) %}
+                    <img src="{{ image }}" alt="{{ product.name }}" 
+                         class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="space-y-6">
+            <h1 class="text-3xl font-bold">{{ product.name }}</h1>
+            <div class="text-2xl font-semibold text-blue-600">${{ product.price|number_format(2) }}</div>
+            
+            {% if product.stock > 0 %}
+                <div class="text-green-600">In Stock ({{ product.stock }} available)</div>
+            {% else %}
+                <div class="text-red-600">Out of Stock</div>
+            {% endif %}
+
+            <div class="prose">
+                {{ product.description|raw }}
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex items-center space-x-4">
+                    <label class="font-medium">Quantity:</label>
+                    <select class="form-select rounded-md" name="quantity">
+                        {% for i in 1..min(product.stock, 10) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 
+                        transition duration-200" onclick="addToCart({{ product.id }})">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="border-t pt-6 mt-6">
+                <h3 class="font-semibold mb-2">Product Details</h3>
+                <dl class="grid grid-cols-1 gap-2">
+                    <div class="grid grid-cols-2">
+                        <dt class="text-gray-600">SKU</dt>
+                        <dd>{{ product.sku }}</dd>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <dt class="text-gray-600">Brand</dt>
+                        <dd>{{ product.brand }}</dd>
+                    </div>
+                    {% if product.weight %}
+                        <div class="grid grid-cols-2">
+                            <dt class="text-gray-600">Weight</dt>
+                            <dd>{{ product.weight }}</dd>
+                        </div>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

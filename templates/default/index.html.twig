@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Welcome to Our Store{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto px-4">
+        <div class="text-center py-12">
+            <h1 class="text-4xl font-bold mb-4">Welcome to Our Store</h1>
+            <p class="text-xl text-gray-600 mb-8">Discover our amazing products</p>
+            <a href="{{ path('shop_index') }}" 
+               class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200">
+                Start Shopping
+            </a>
+        </div>
+    </div>
+{% endblock %}

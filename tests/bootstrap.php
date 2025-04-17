@@ -2,6 +2,7 @@
 
 // define project root which will be used throughout the bootstrapping process
 define('PIMCORE_PROJECT_ROOT', dirname(__DIR__));
+define('PIMCORE_PROJECT_DIR', PIMCORE_PROJECT_ROOT);
 
 const PROJECT_ROOT = PIMCORE_PROJECT_ROOT;
 

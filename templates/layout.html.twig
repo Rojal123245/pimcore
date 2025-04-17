@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="h-full">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('styles') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {% if cart is defined %}
+                {{ encore_entry_script_tags('cart') }}
+            {% endif %}
+        {% endblock %}
+    </head>
+    <body class="h-full">
+        <div class="min-h-full">
+            <nav class="bg-gray-800">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="flex h-16 items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <a href="/" class="text-white text-xl font-bold">Your Logo</a>
+                            </div>
+                            <div class="hidden md:block">
+                                <div class="ml-10 flex items-baseline space-x-4">
+                                    <a href="{{ path('shop_index') }}" class="text-gray-300 hover:text-white px-3 py-2 rounded-md">Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="relative">
+                                <a href="{{ path('shop_cart') }}" class="text-gray-300 hover:text-white p-2">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                    <span id="cart-counter" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                                        {{ app.session.get('cart')|length }}
+                                    </span>
+                                </a>
+                            </div>
+                            {% if app.user %}
+                                <div class="ml-4">
+                                    <a href="{{ path('account') }}" class="text-gray-300 hover:text-white px-3 py-2">My Account</a>
+                                    <a href="{{ path('app_logout') }}" class="text-gray-300 hover:text-white px-3 py-2">Logout</a>
+                                </div>
+                            {% else %}
+                                <div class="ml-4">
+                                    <a href="{{ path('app_login') }}" class="text-gray-300 hover:text-white px-3 py-2">Login</a>
+                                    <a href="{{ path('app_register') }}" class="text-gray-300 hover:text-white px-3 py-2">Register</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main>
+                <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                    {% block content %}{% endblock %}
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

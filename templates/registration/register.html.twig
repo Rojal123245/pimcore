@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold mb-6">Register</h1>
+
+            {{ form_start(registrationForm, {'attr': {'class': 'space-y-4'}}) }}
+                <div>
+                    {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'block text-gray-700 mb-2'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500'}}) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div>
+                    {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'block text-gray-700 mb-2'}}) }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500'}}) }}
+                    {{ form_errors(registrationForm.plainPassword) }}
+                </div>
+
+                <div class="flex items-center">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'mr-2'}}) }}
+                    {{ form_label(registrationForm.agreeTerms, 'Agree to terms', {'label_attr': {'class': 'text-gray-700'}}) }}
+                </div>
+                {{ form_errors(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">
+                    Register
+                </button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

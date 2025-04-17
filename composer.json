@@ -17,16 +17,21 @@
     "pimcore/bundle-generator": "^2.0",
     "pimcore/data-hub": "^1.8",
     "pimcore/data-importer": "^1.9",
+    "pimcore/ecommerce-framework-bundle": "^1.3",
     "pimcore/perspective-editor": "^1.7",
     "pimcore/pimcore": "^11.0.4",
+    "stripe/stripe-php": "*",
     "symfony/dotenv": "^6.2",
+    "symfony/http-client": "^6.2",
     "symfony/runtime": "^6.2",
+    "symfony/stopwatch": "^6.2",
     "symfony/webpack-encore-bundle": "^1.17",
-    "symfony/workflow": "^6.4"
+    "symfony/workflow": "^6.2"
   },
   "require-dev": {
     "codeception/codeception": "^5.0.3",
-    "codeception/module-symfony": "^3.1.0"
+    "codeception/module-symfony": "^3.1.0",
+    "symfony/maker-bundle": "^1.62"
   },
   "suggest": {
     "pimcore/data-hub": "Universal data interface for GraphQL, CSV and other formats"

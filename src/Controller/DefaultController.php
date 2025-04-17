@@ -15,6 +15,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends FrontendController
 {
     /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction(Request $request): Response
+    {
+        return $this->render('default/index.html.twig');
+    }
+
+    /**
      * @param Request $request
      * @return Response
      */
@@ -22,5 +30,4 @@ class DefaultController extends FrontendController
     {
         return $this->render('default/default.html.twig');
     }
-
 }

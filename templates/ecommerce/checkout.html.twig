@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://js.stripe.com/v3/"></script>
+    {{ encore_entry_script_tags('checkout') }}
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Order Summary -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+            {% for item in order.items %}
+                <div class="flex justify-between py-2">
+                    <span>{{ item.product.name }} x {{ item.quantity }}</span>
+                    <span>${{ item.total|number_format(2) }}</span>
+                </div>
+            {% endfor %}
+            <div class="border-t mt-4 pt-4">
+                <div class="flex justify-between font-semibold">
+                    <span>Total</span>
+                    <span>${{ order.total|number_format(2) }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Form -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Payment Details</h2>
+            <form id="payment-form">
+                <div class="mb-4">
+                    <div id="card-element"></div>
+                    <div id="card-errors" class="text-red-600 text-sm mt-2"></div>
+                </div>
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 
+                               transition duration-200">
+                    Pay Now
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

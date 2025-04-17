@@ -61,11 +61,10 @@ Thumbs.db
 /cache
 /public/build
 # local config
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
-!/config/local
-/config/local/*
 !config/local/.gitkeep
 
 /var/*

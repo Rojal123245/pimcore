@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6">My Account</h1>
+        
+        <div class="bg-white shadow rounded-lg p-6">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Email</label>
+                <p class="text-gray-600">{{ user.email }}</p>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Roles</label>
+                <ul class="list-disc list-inside text-gray-600">
+                    {% for role in user.roles %}
+                        <li>{{ role }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
